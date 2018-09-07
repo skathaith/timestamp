@@ -42,6 +42,7 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
   if (dateString == undefined) {
 
     res.json({unix:moment().valueOf(),utc:new Date().toUTCString()});
+  }
 
   if (new Date(modifiedDateString) !== "Invalid Date") {
 
