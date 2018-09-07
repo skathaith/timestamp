@@ -7,7 +7,7 @@ var moment = require('moment');
 var app = express();
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC
+// so that your API is remotely testable by FCC 
 var cors = require('cors');
 app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 
@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 });
 
 
-// your first API endpoint...
+// your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
@@ -31,27 +31,27 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/timestamp/:date_string?", function (req, res) {
     var dateString =req.params.date_string;
    var modifiedDateString = parseInt(dateString);
-
+  
   if(dateString.indexOf("-") > -1) {
-
+    
     modifiedDateString= dateString;
-
+  
   }
-
-
+  
+  
   if (dateString == undefined) {
-
+    
     res.json({unix:moment().valueOf(),utc:new Date().toUTCString()});
   }
-
+  
   if (new Date(modifiedDateString) !== "Invalid Date") {
-
+    
     res.json({unix:new Date(modifiedDateString).getTime(),utc:new Date(modifiedDateString).toUTCString()});
-
+    
   } else {
-
+    
     res.json({"unix": null, "utc" : "Invalid Date" });
-
+  
   }
 
 });
